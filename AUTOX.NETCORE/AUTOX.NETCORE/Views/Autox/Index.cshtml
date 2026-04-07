@@ -1,0 +1,28 @@
+﻿@using AUTOX.NETCORE.Helpers
+
+@{
+    ViewData["Title"] = "Home";
+    ViewData["MetaKeywords"] = "AUTOX detailing, automotive care, car detailing, paint correction, ceramic coating, vehicle protection, Sri Lanka";
+    ViewData["MetaDescription"] = "AUTOX premium automotive care, detailing, restoration, paint protection, and precision vehicle services.";
+}
+
+<!-- Services -->
+@Html.RenderAction("Services", "PublicLayout", new { Area = "" })
+
+<!-- About -->
+@Html.RenderAction("About", "PublicLayout", new { Area = "" })
+
+<!-- Showcase -->
+@Html.RenderAction("Showcase", "PublicLayout", new { Area = "" })
+
+<!-- Stats -->
+@Html.RenderAction("Stats", "PublicLayout", new { Area = "" })
+
+<!-- Booking placeholder -->
+@Html.RenderAction("Booking", "PublicLayout", new { Area = "" })
+
+<!-- CTA -->
+@Html.RenderAction("CTA", "PublicLayout", new { Area = "" })
+
+<!-- Contact -->
+@Html.RenderAction("Contact", "PublicLayout", new { Area = "" })

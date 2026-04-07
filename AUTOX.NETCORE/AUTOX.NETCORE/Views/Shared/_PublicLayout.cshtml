@@ -1,0 +1,145 @@
+﻿@using AUTOX.NETCORE.Helpers
+
+@{
+    var successMsg = TempData["Success"]?.ToString();
+    var errorMsg = TempData["Error"]?.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    @{
+        var urlPath = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
+        var commoTitle = "AUTOX | Premium Automotive Care";
+        var commoDescription = "AUTOX premium automotive care, detailing, restoration, paint protection, and precision vehicle services.";
+        var commonLogoPath = $"{Context.Request.Scheme}://{Context.Request.Host}/asset/logo/logo.jpeg";
+    }
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- SEO -->
+    <meta name="author" content="AUTOX">
+    <meta name="keywords" content='@ViewData["MetaKeywords"]'>
+    <meta name="description" content='@ViewData["MetaDescription"]'>
+
+    <!-- Canonical -->
+    <link rel="canonical" href="@urlPath" />
+
+    <link rel="icon" type="image/jpeg" href="@commonLogoPath" />
+    <link rel="shortcut icon" href="@commonLogoPath" />
+    <link rel="apple-touch-icon" href="@commonLogoPath" />
+
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@commoTitle">
+    <meta property="og:description" content="@commoDescription">
+    <meta property="og:image" content="@commonLogoPath">
+    <meta property="og:image:secure_url" content="@commonLogoPath">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="@urlPath">
+    <meta property="og:site_name" content="AUTOX">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@commoTitle">
+    <meta name="twitter:description" content="@commoDescription">
+    <meta name="twitter:image" content="@commonLogoPath">
+
+    <title>Autox - @ViewData["Title"]</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+
+    <link href="~/css/custom.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    @Html.RenderAction("Navbar", "PublicLayout", new { Area = "" })
+
+    <!-- Hero -->
+    @{
+        var controllerName = ViewContext.RouteData.Values["controller"]?.ToString();
+    }
+
+    @if (string.Equals(controllerName, "Booking", StringComparison.OrdinalIgnoreCase))
+    {
+        @Html.RenderAction("HeroBooking", "PublicLayout", new { Area = "" })
+    }
+    else
+    {
+        @Html.RenderAction("Hero", "PublicLayout", new { Area = "" })
+    }
+
+    @RenderBody()
+
+    <!-- Footer -->
+    @Html.RenderAction("Footer", "PublicLayout", new { Area = "" })
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- izitoast -->
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+
+    <script src="~/js/global-functions.js"></script>
+
+    <script>
+        $(function () {
+            // Smooth active nav state
+            $('.nav-link').on('click', function () {
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // Reveal on scroll
+            function revealOnScroll() {
+                $('.reveal').each(function () {
+                    const top = this.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (top < windowHeight - 80) {
+                        $(this).addClass('show');
+                    }
+                });
+            }
+
+            revealOnScroll();
+            $(window).on('scroll', revealOnScroll);
+
+            // Auto close mobile nav after click
+            $('.navbar-collapse .nav-link').on('click', function () {
+                $('.navbar-collapse').collapse('hide');
+            });
+
+            iziToast.settings({
+                timeout: 3500,
+                resetOnHover: true,
+                transitionIn: 'fadeInUp',
+                transitionOut: 'fadeOut',
+                position: 'topRight'
+            });
+
+            const successMsg = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(successMsg));
+            const errorMsg = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(errorMsg));
+
+            if (successMsg) {
+                showSuccess(successMsg);
+            }
+
+            if (errorMsg) {
+                showError(errorMsg);
+            }
+        });
+    </script>
+
+</body>
+</html>

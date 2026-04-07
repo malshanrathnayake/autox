@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = "Booking";
+    ViewData["MetaKeywords"] = "AUTOX detailing booking, car wash booking, detailing booking, cut and polish, vehicle care Sri Lanka";
+    ViewData["MetaDescription"] = "Book your AUTOX premium automotive care service online. Reserve detailing, cut and polish, washing and more.";
+}
+
+<section class="booking-page">
+    <div class="container booking-shell">
+
+        <div class="booking-intro-card reveal mb-4">
+            <div class="booking-kicker">
+                <span class="booking-kicker-dot"></span>
+                Premium Reservation Experience
+            </div>
+
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <h1 class="section-title mb-3">Book your <span style="color: var(--accent);">AUTOX</span> service with confidence</h1>
+                    <p class="booking-lead">
+                        Reserve your preferred vehicle care service in a clean, premium flow designed to match the AUTOX brand. Choose your vehicle type, select the service you need, and request your preferred date in seconds.
+                    </p>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="mini-info-card">
+                                <h6>Fast Request Flow</h6>
+                                <p>Easy form structure for instant inquiry and booking confirmation.</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mini-info-card">
+                                <h6>Premium Service Selection</h6>
+                                <p>Ideal for detailing, cut and polish, waxing, and more.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-xl-8">
+                <div class="booking-form-card reveal">
+                    <h2 class="booking-card-title">Booking details</h2>
+                    <p class="booking-card-text mb-4">
+                        Fill in your information below and our team can confirm availability, pricing, and service timing.
+                    </p>
+
+                    <form method="post" asp-controller="Booking" asp-action="Create">
+                        @Html.AntiForgeryToken()
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label" for="CustomerName">Full Name <span class="required-mark">*</span></label>
+                                <input id="CustomerName" name="CustomerName" type="text" class="autox-input" placeholder="Enter your full name" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="ContactNumber">Contact Number <span class="required-mark">*</span></label>
+                                <input id="ContactNumber" name="ContactNumber" type="tel" class="autox-input" placeholder="+94 77 123 4567" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="Email">Email Address</label>
+                                <input id="Email" name="Email" type="email" class="autox-input" placeholder="name@example.com" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="BookingDate">Preferred Date <span class="required-mark">*</span></label>
+                                <input id="BookingDate" name="BookingDate" type="date" class="autox-input" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="VehicleType">Vehicle Type <span class="required-mark">*</span></label>
+                                <input id="VehicleType" name="VehicleType" type="text" class="autox-input" placeholder="Enter vehicle type" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="ServiceType">Service Type <span class="required-mark">*</span></label>
+                                <select id="ServiceType" name="ServiceType" class="autox-select" required>
+                                    <option value="">Select service type</option>
+                                    <option>Detailing</option>
+                                    <option>Cut and Polish</option>
+                                    <option>Headlight Polish</option>
+                                    <option>Glass Polish</option>
+                                    <option>Water Spot Removing</option>
+                                    <option>Body Wax</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label" for="Notes">Note</label>
+                                <textarea id="Notes" name="Notes" class="autox-textarea" placeholder="Tell us about your vehicle condition, preferred time, special requests, or anything we should know."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="booking-submit-wrap">
+                            <button type="submit" class="btn btn-brand">Confirm Booking Request</button>
+                            <a href="@Url.Action("Index", "Autox")#contact" class="btn btn-outline-brand">Need Help First?</a>
+                        </div>
+
+                        <p class="booking-submit-note mt-4">
+                            By submitting this form, you send a booking request. Final confirmation can be provided by the AUTOX team.
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="booking-info-card reveal">
+                    <h3 class="booking-card-title">Why book with AUTOX?</h3>
+                    <p class="booking-card-text">
+                        Book your AUTOX service in just a few steps. Share your vehicle details and preferred date, and our team will get in touch to confirm availability, pricing, and service requirements.
+                    </p>
+
+                    <ul class="booking-steps">
+                        <li>
+                            <div class="step-no">01</div>
+                            <div class="step-content">
+                                <h6>Tell us about your vehicle</h6>
+                                <p>Share your vehicle type so we can recommend the right level of care and plan your appointment properly.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-no">02</div>
+                            <div class="step-content">
+                                <h6>Choose your service</h6>
+                                <p>Select the service you need, whether it is washing, detailing, interior care, or paint enhancement.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-no">03</div>
+                            <div class="step-content">
+                                <h6>Request a booking date</h6>
+                                <p>Pick your preferred date and our team will get back to you with confirmation, availability, and next steps.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="booking-section-spacer">
+                        <h4 class="booking-card-title mb-2" style="font-size:1.05rem;">Popular services</h4>
+                        <div class="service-pill-wrap">
+                            <span class="service-pill">Detailing</span>
+                            <span class="service-pill">Cut &amp; Polish</span>
+                            <span class="service-pill">Headlight Polish</span>
+                            <span class="service-pill">Glass Polish</span>
+                            <span class="service-pill">Water Spot Removing</span>
+                            <span class="service-pill">Body Wax</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-service-grid reveal">
+            <div class="booking-service-card">
+                <h5>Detailing Packages</h5>
+                <p>Thorough interior and exterior care designed to leave your vehicle looking fresh, polished, and premium.</p>
+            </div>
+
+            <div class="booking-service-card">
+                <h5>Cut and Polish</h5>
+                <p>Enhance paint clarity and restore a richer shine for a cleaner, more refined exterior finish.</p>
+            </div>
+
+            <div class="booking-service-card">
+                <h5>Routine Washing</h5>
+                <p>Regular cleaning services to maintain a neat, presentable, and well cared for vehicle every day.</p>
+            </div>
+
+            <div class="booking-service-card">
+                <h5>Custom Requests</h5>
+                <p>Tell us about any special care needs, concerns, or service combinations and our team will assist you.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    $(function () {
+        var today = new Date().toISOString().split('T')[0];
+        $('#BookingDate').attr('min', today);
+    });
+</script>

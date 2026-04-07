@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="AUTOX.BLL/AUTOX.BLL.csproj" Id="7e71f152-6858-4cb3-aaf2-71d745ac875c" />
+  <Project Path="AUTOX.DAL/AUTOX.DAL.csproj" Id="5429cc8b-db97-433d-9e7e-a0c6182af713" />
+  <Project Path="AUTOX.DATABASE/AUTOX.DATABASE.sqlproj" Id="adfb1a25-5e22-46aa-aefb-c69122072853">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="AUTOX.DOMAIN/AUTOX.DOMAIN.csproj" Id="4b8b28c7-10d8-490b-b529-853180b28d17" />
+  <Project Path="AUTOX.NETCORE/AUTOX.NETCORE.csproj" />
+</Solution>
